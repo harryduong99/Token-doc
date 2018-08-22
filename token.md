@@ -14,7 +14,7 @@ Truyền xác thực tới các ứng dụng khác
 Tính bảo mật cao
 
 ## Ai dùng Token Based Authentication?  
-Bất kì hệ thống API lơn hoặc web app mà bạn từng tiếp xúc đều sử dụng token. Các ứng dụng như Facebook, Twitter, Google+, GitHub đêù sử dụng tokens  
+Bất kì hệ thống API lớn hoặc web app mà bạn từng tiếp xúc đều sử dụng token. Các ứng dụng như Facebook, Twitter, Google+, GitHub đêù sử dụng tokens  
 Hãy xem xét cách nó thực sự làm việc  
 
 ## Tại sao token được sinh ra  
@@ -22,7 +22,7 @@ Trước khi xem cách mà token based authentication làm việc và hiệu qu�
 
 ### Server Based Authentication (Phương thức truyền thống)
 
-> Giao thức HTTP là _stateless_, điều này có nghiwax là nếu chúng ta xác thực người dùng với username và password, trong request tiếp theo, chugns ta sẽ không biết họ là ai và phải xác thực lại lần nữa.  
+> Giao thức HTTP là _stateless_, điều này có nghĩa là nếu chúng ta xác thực người dùng với username và password, trong request tiếp theo, chúng ta sẽ không biết họ là ai và phải xác thực lại lần nữa.  
 
 Các truyền thống để ứng dụng nhớ ta là ai là  **Lưu thông tin đăng nhập của người dùng trên server**. Diều này có thể thực hiện thông qua một vài cách khác nhau với session, thường là trong bộ nhớ hoặc trên ổ đĩa.
 
