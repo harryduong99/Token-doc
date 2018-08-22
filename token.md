@@ -3,7 +3,7 @@
 
 # The Ins and Outs of Token Based Authentication ― Scotch
 
-## Introduction
+## Giới thiệu  
 
 Token xác thực nguời dùng xuât hiện ở khắp nơi trên các trang web ngày nay. Với hầu hết các công ty web sử dụng API, token là các tốt nhất để xử lí việc xác thực đa người dùng.
 Có một vài yếu tố rất quan trọng khi chọn token based authentication và ứng dụng của bạn. Các lí do chính là:
@@ -89,7 +89,7 @@ Tokens sẽ cho phép chúng ta xây dựng các ứng dụng mà có thể chia
 
 Khi chúng ta đăng nhập vào Twitter thông qua một dịch vụ (gọi là Buffer), chúng ta đang cho phép Buffer đăng lên luồng Twitter của mình.
 
-Bằng cách sử dụng token, đây là cách chúng ta ** cung cấp quyền chọn lọc cho các ứng dụng của bên thứ ba **. Chúng ta thậm chí có thể xây dựng API của riêng mình và cung cấp các token quyền đặc biệt nếu người dùng của chúng ta muốn cấp quyền truy cập vào dữ liệu của họ cho một ứng dụng khác.  
+Bằng cách sử dụng token, đây là cách chúng ta **cung cấp quyền chọn lọc cho các ứng dụng của bên thứ ba**. Chúng ta thậm chí có thể xây dựng API của riêng mình và cung cấp các token quyền đặc biệt nếu người dùng của chúng ta muốn cấp quyền truy cập vào dữ liệu của họ cho một ứng dụng khác.  
 
 ### Multiple Platforms and Domains
 
@@ -101,7 +101,8 @@ Khi API của chúng ta chỉ phân phối dữ liệu, chúng ta cũng có th�
     Access-Control-Allow-Origin: *
     
 
-Dữ liệu và tài nguyên của chúng ta sẵn có cho các yêu cầu từ bất kỳ miền nào ngay bây giờ ** miễn là người dùng có token hợp lệ **.  
+Dữ liệu và tài nguyên của chúng ta sẵn có cho các yêu cầu từ bất kỳ miền nào ngay bây giờ **miễn là người dùng có token hợp lệ
+.  
 
 
 ### Standards Based
