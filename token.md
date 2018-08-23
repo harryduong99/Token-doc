@@ -5,10 +5,10 @@
 
 ## Giới thiệu  
 
-Token xác thực nguời dùng xuât hiện ở khắp nơi trên các trang web ngày nay. Với hầu hết các công ty web sử dụng API, token là các tốt nhất để xử lí việc xác thực đa người dùng.
+Token Based Authentication xuât hiện ở khắp nơi trên các trang web ngày nay. Với hầu hết các công ty web sử dụng API, token là các tốt nhất để xử lí việc xác thực đa người dùng.
 Có một vài yếu tố rất quan trọng khi chọn token based authentication và ứng dụng của bạn. Các lí do chính là:
 
-Servers có thể mở rộng và mang tính stateless
+Servers không trạng thái và có thể mở rộng
 Sẵn sàng cho mobile  
 Truyền xác thực tới các ứng dụng khác  
 Tính bảo mật cao
@@ -79,7 +79,7 @@ Cũng đừng lo lắng! Những vấn đề đó đã biến mất với token 
 
 ### Bảo mật  
 
-Token,chú không phải cookie, được gửi theo mọi request và vì không có cookie nào được gửi, điều này giúp ngăn chặn các cuộc tấn công CSRF. Ngay cả khi việc triển khai cụ thể của bạn lưu trữ token trong một cookie ở phía client thì cookie cũng chỉ là một cơ chế lưu trữ thay vì một cơ chế xác thực. Không có thông tin dựa trên session để thao tác vì chúng ta không có session!  
+Token,chứ không phải cookie, được gửi theo mọi request và vì không có cookie nào được gửi, điều này giúp ngăn chặn các cuộc tấn công CSRF. Ngay cả khi việc triển khai cụ thể của bạn lưu trữ token trong một cookie ở phía client thì cookie cũng chỉ là một cơ chế lưu trữ thay vì một cơ chế xác thực. Không có thông tin dựa trên session để thao tác vì chúng ta không có session!  
 
 Token cũng hết hạn sau một khoảng thời gian nhất định, do đó, người dùng sẽ được yêu cầu đăng nhập lại. Điều này giúp chúng ta luôn an toàn. Ngoài ra còn có khái niệm về [thu hồi token] [2] cho phép chúng ta vô hiệu hóa token cụ thể và thậm chí là một nhóm token dựa trên cùng một sự cho phép.  
 
@@ -101,11 +101,11 @@ Khi API của chúng ta chỉ phân phối dữ liệu, chúng ta cũng có th�
     Access-Control-Allow-Origin: *
     
 
-Dữ liệu và tài nguyên của chúng ta sẵn có cho các yêu cầu từ bất kỳ miền nào ngay bây giờ **miễn là người dùng có token hợp lệ
+Dữ liệu và tài nguyên của chúng ta sẵn có cho các yêu cầu từ bất kỳ domain nào ngay bây giờ **miễn là người dùng có token hợp lệ
 .  
 
 
-### Standards Based
+### Dựa trên các tiêu chuẩn
 
 Khi tạo một token, bạn có một vài tùy chọn. Chúng ta sẽ đào sâu hơn vào chủ đề này khi chúng ta bảo mật một API trong một bài viết tiếp theo, nhưng tiêu chuẩn để sử dụng sẽ là [JSON Web Tokens] [3].  
 
