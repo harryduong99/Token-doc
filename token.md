@@ -1,7 +1,7 @@
 
 [Source](https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication "Permalink to The Ins and Outs of Token Based Authentication ― Scotch")
 
-# The Ins and Outs of Token Based Authentication ― Scotch
+# Đầu vào và đầu ra của cơ chế xác thực dựa trên token - Scotch
 
 ## Giới thiệu  
 
@@ -14,7 +14,7 @@ Truyền xác thực tới các ứng dụng khác
 Tính bảo mật cao
 
 ## Ai dùng Token Based Authentication?  
-Bất kì hệ thống API lớn hoặc web app mà bạn từng tiếp xúc đều sử dụng token. Các ứng dụng như Facebook, Twitter, Google+, GitHub đêù sử dụng tokens  
+Bất kì hệ thống API lớn hoặc web app mà bạn từng tiếp xúc đều sử dụng token. Các ứng dụng như Facebook, Twitter, Google+, GitHub đêù sử dụng token
 Hãy xem xét cách nó thực sự làm việc  
 
 ## Tại sao token được sinh ra  
@@ -24,7 +24,7 @@ Trước khi xem cách mà token based authentication làm việc và hiệu qu�
 
 > Giao thức HTTP là _stateless_, điều này có nghĩa là nếu chúng ta xác thực người dùng với username và password, trong request tiếp theo, chúng ta sẽ không biết họ là ai và phải xác thực lại lần nữa.  
 
-Các truyền thống để ứng dụng nhớ ta là ai là  **Lưu thông tin đăng nhập của người dùng trên server**. Diều này có thể thực hiện thông qua một vài cách khác nhau với session, thường là trong bộ nhớ hoặc trên ổ đĩa.
+Cách truyền thống để ứng dụng nhớ ta là ai là  **Lưu thông tin đăng nhập của người dùng trên server**. Diều này có thể thực hiện thông qua một vài cách khác nhau với session, thường là trong bộ nhớ hoặc trên ổ đĩa.
 
 Đây là biểu đồ về quy trình làm việc của Server Based Authentication:
 
@@ -36,14 +36,14 @@ Một số vấn đề lớn nảy sinh với phương pháp xác thực này.
 
 **Sessions**: Mỗi lần người dùng xác thực, máy chủ lại phải tạo bản ghi ở đâu đó trên chính nó. Điều này thường được thực hiện trên bộ nhớ, và khi có nhiều người dùng xác thực, chi phí cho máy chủ của bạn tăng lên.
 
-**Scalability**: Khi các session được lưu trong bộ nhớ, điều này tạo ra vấn đề với khả năng mở rộng. Khi các nhà cung cấp dịch vụ đám mây của chúng ta bắt đầu sao chép các máy chủ để xử lý load ứng dụng, việc có các thông tin quan trọng trong bộ nhớ session sẽ hạn chế khả năng mở rộng của chúng ta.
+**Scalability**: Khi các session được lưu trong bộ nhớ, điều này gây ra vấn đề về khả năng mở rộng. Khi các nhà cung cấp dịch vụ cloud của chúng ta bắt đầu sao chép các máy chủ để xử lý load ứng dụng, việc lưu trữ các thông tin quan trọng trong bộ nhớ session sẽ hạn chế khả năng mở rộng của chúng ta.
 
-**CORS**:  Vì chúng ta muốn mở rộng ứng dụng của mình để cho phép dữ liệu của chúng ta được sử dụng trên nhiều thiết bị di động, ta phải lo lắng về việc chia sẻ tài nguyên gốc (CORS). Khi sử dụng các lần gọi AJAX để lấy các tài nguyên từ một domain khác (từ điện thoại di động đến máy chủ API của chúng ta), ta có thể gặp sự cố với các yêu cầu bị cấm.  
+**CORS**:  Vì chúng ta muốn mở rộng ứng dụng của mình để cho phép dữ liệu của chúng ta được sử dụng trên nhiều thiết bị di động, ta phải lo lắng về việc chia sẻ tài nguyên gốc (CORS). Khi sử dụng các lần gọi AJAX để lấy các tài nguyên từ một domain khác (từ điện thoại di động đến máy chủ API của chúng ta), ta có thể gặp sự cố với các request bị chặn.  
 
-**CSRF**: Chúng ta sẽ có sự bảo vệ chống lại [cross-site request forgery][1] (CSRF).  Người dùng dễ bị tấn công CSRF vì họ có thể đã xác thực với một trang web ngân hàng và nó có thể được tận dụng khi truy cập các trang web khác.  
+**CSRF**: Chúng ta sẽ có sự bảo vệ chống lại [cross-site request forgery][1] (CSRF).  Người dùng dễ bị tấn công CSRF vì họ có thể đã xác thực với một trang web ngân hàng và nó có thể bị khai thác khi truy cập các trang web khác.  
 Với những vấn đề này thì khả năng mở rộng là vấn đề chính, bạn nên thử một cách tiếp cận khác.  
 ## Cách Token Based hoạt động  
-Token based authentication là **stateless**. Chúng ta không lưu bất cứ thông tin người dùng nào trên server hay trên session.
+Token based authentication là  **stateless**. Chúng ta không lưu bất cứ thông tin người dùng nào trên server hay trên session.
 
 Nó sẽ xử lí nhiều vấn đề với việc phải lưu thông tin trên máy chủ  
 
@@ -53,17 +53,17 @@ Mặc dù việc triển khai này có thể thay đổi, nhưng luôn gồm cá
 
 1. Người dùng yêu cầu truy cập với Username / Password
 2. Ứng dụng xác thực thông tin đăng nhập 
-3. Ứng dụng cung cấp token đã được đăng ký cho máy khách
+3. Ứng dụng cung cấp token đã được xác nhận cho máy khách
 4. Máy khách lưu trữ token đó và gửi nó kém theo  mỗi request
 5. Server xác thực token và phản hồi lại với data
 
-**Mỗi request sẽ yêu cầu token**. Token được gửi trong HTTP header và điều đó giữu nguyên tính chất stateless của HTTP request. Chúng ta cũng cần cài đặt server để chấp nhận request từ tất cả các miền sử dụng `Access-Control-Allow-Origin: *`. diều thú vị về việc chỉ định `*` trong ACAO header là nó không cho phép yêu cầu cung cấp thông tin xác thực như trong HTTP authentication, xác thực client-side SSL , hay cookies.
+**Mỗi request sẽ yêu cầu token**. Token được gửi trong HTTP header và điều đó giữ nguyên tính chất stateless của HTTP request. Chúng ta cũng cần cài đặt server để chấp nhận request từ tất cả các domain bằng cách sử dụng `Access-Control-Allow-Origin: *`. diều thú vị về việc chỉ định `*` trong ACAO header là nó không cho phép yêu cầu cung cấp thông tin xác thực như trong HTTP authentication, xác thực client-side SSL , hay cookies.
 
 Dưới đây là hình ảnh minh họa để giải thích quá trình:
 
 Một khi chúng ta đã xác thực thông tin của mình và có token, chúng ta có thể thực hiện nhiều việc với token này.
 
-Chúng ta thậm chí có thể tạo một permission based token và truyền nó vào ứng dụng thứ 3 (như là một mobile mà ta muốn sử dụng), và nó sẽ có quyền truy cập vào dữ liệu của chúng ta -- **nhưng chỉ thông tin mà ta cho phép với token cụ thể**.
+Chúng ta thậm chí có thể tạo một permission based token và truyền nó cho ứng dụng thứ 3 (như là một mobile mà ta muốn sử dụng), và nó sẽ có quyền truy cập vào dữ liệu của chúng ta -- **nhưng chỉ thông tin mà ta cho phép với token cụ thể**.
 
 ## Các lợi ích của token  
 
@@ -101,19 +101,17 @@ Khi API của chúng ta chỉ phân phối dữ liệu, chúng ta cũng có th�
     Access-Control-Allow-Origin: *
     
 
-Dữ liệu và tài nguyên của chúng ta sẵn có cho các yêu cầu từ bất kỳ miền nào ngay bây giờ **miễn là người dùng có token hợp lệ
-.  
-
+Dữ liệu và tài nguyên của chúng ta sẵn có cho các yêu cầu từ bất kỳ miền nào ngay bây giờ **miễn là người dùng có token hợp lệ**
 
 ### Standards Based
 
 Khi tạo một token, bạn có một vài tùy chọn. Chúng ta sẽ đào sâu hơn vào chủ đề này khi chúng ta bảo mật một API trong một bài viết tiếp theo, nhưng tiêu chuẩn để sử dụng sẽ là [JSON Web Tokens] [3].  
 
- Trình gỡ lỗi tiện ích và biểu đồ thư viện này hiển thị hỗ trợ cho các JSON Web Tokens. Bạn có thể thấy rằng nó có một số lượng lớn hỗ trợ trên nhiều ngôn ngữ. Điều này có nghĩa là bạn có thể thực sự chuyển đổi cơ chế xác thực của mình nếu bạn chọn làm như vậy trong tương lai!  
+ Trình tiện ích debug và biểu đồ thư viện này hiển thị hỗ trợ cho các JSON Web Tokens. Bạn có thể thấy rằng nó có  hỗ trợ trên một số lượng lớn ngôn ngữ. Điều này có nghĩa là bạn có thể thực sự chuyển đổi cơ chế xác thực của mình nếu bạn chọn làm như vậy trong tương lai!  
 
 ## Phần kết luận  
 
-Đây chỉ là xem xét việc làm thế nào và tại sao của token based authentication. Như mọi khi trong thế giới của bảo mật, có nhiều, nhiều, nhiều, nhiều (quá nhiều?) Nhiều hơn cho mỗi chủ đề và nó thay đổi theo từng trường hợp sử dụng. Thậm chí, chúng tôi cũng nghiên cứu một số chủ đề về khả năng mở rộng xứng đáng với cuộc trò chuyện của riêng họ.
+Đây chỉ là xem xét việc làm thế nào và tại sao nên dùng token based authentication. Như mọi khi trong thế giới của các vấn đề về bảo mật, có nhiều, nhiều, nhiều, nhiều (quá nhiều?) Nhiều hơn cho mỗi chủ đề và nó thay đổi theo từng trường hợp sử dụng. Thậm chí, chúng tôi cũng nghiên cứu một số chủ đề về khả năng mở rộng xứng đáng với cuộc trò chuyện của riêng họ.
 
 Đây là một overview nhanh ở cấp độ cao, vì vậy xin vui lòng chỉ ra bất cứ điều gì đã bị bỏ lỡ hoặc bất kỳ câu hỏi nào bạn có về vấn đề này.  
 Trong bài việt tiếp theo, chugns ta sẽ tìm hiểu về Json Web Token.  
